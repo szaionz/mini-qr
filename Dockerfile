@@ -38,7 +38,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./
 
-RUN mkdir -p /usr/local/lib/node_modules/serve && chown -R node /app && chown -R node /user/local/lib/node_modules
+RUN mkdir -p /usr/local/lib/node_modules/serve && chown -R node /app && chown -R node /usr/local/lib/node_modules
 USER node
 WORKDIR /app
 RUN npm install -g serve
