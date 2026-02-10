@@ -37,6 +37,9 @@ WORKDIR /app
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./
+RUN chmown -R node /app
+USER node
+WORKDIR /app
 RUN npm install -g serve
 EXPOSE 8080
 CMD ["serve", "-s", "dist", "-l", "8080"]
